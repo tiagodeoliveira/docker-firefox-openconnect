@@ -13,5 +13,6 @@ docker run -d -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firefox-vpn --h
 
 To setup the VPN:
 ```
-docker exec -it firefox-vpn openconnect --config=/etc/openconnect/openconnect.conf -b myvpn.com
+$ docker exec -it firefox-vpn base 
+$ openconnect --config=/etc/openconnect/openconnect.conf -b myvpn.com
 ```
