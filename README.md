@@ -8,10 +8,5 @@ xhost -local:root && xhost +local:firefox-vpn # only the firefox container is ab
 
 To execute the container
 ```
-docker run -d -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --name firefox-vpn --hostname firefox-vpn --privileged tiagodeoliveira/firefox-vpn
-```
-
-To setup the VPN:
-```
-docker exec -it firefox-vpn openconnect --config=/etc/openconnect/openconnect.conf -b myvpn.com
+docker run --rm -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v ~/firefox-vpn:/root --name firefox-vpn --privileged tiagodeoliveira/firefox-vpn
 ```

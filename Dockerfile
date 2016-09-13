@@ -1,7 +1,10 @@
-FROM ubuntu:latest
+FROM ubuntu:xenial
 
 RUN apt-get update
-RUN apt-get install -y libglu1 firefox openconnect inetutils-ping
+RUN apt-get install -y libglu1 firefox openconnect
 RUN mkdir -p /etc/openconnect && touch /etc/openconnect/openconnect.conf
 
-CMD ["/usr/bin/firefox"]
+COPY docker-entrypoint.sh /entrypoint.sh
+RUN chmod a+x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
